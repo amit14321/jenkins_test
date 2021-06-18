@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'cloud'
-    }
+    agent any
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "MVN3"
@@ -33,6 +31,8 @@ pipeline {
                 success {
                     junit 'api-gateway/target/surefire-reports/*.xml'
                     archiveArtifacts 'api-gateway/target/*.jar'
+                    emailext body: "Please check console output at $BUILD_URL for more information", to: "amitsri491@gmail.com", subject: 'Jenkins Training - $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS'
+       
                 }
             }
         }
