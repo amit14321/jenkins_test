@@ -5,6 +5,10 @@ pipeline {
      //  triggers {
        // cron("*/2 * * * *")
     //}
+        //to enable triggeres schedule uncomment but we have to remove webohhopk below as it takes precedence
+     //  triggers {
+       // pollSCM("*/2 * * * *")
+    //}
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
